@@ -1,12 +1,58 @@
 import streamlit as st
 from prediction_helper import predict
 
-st.title("Aditya Finance : Credit Risk Modelling")
+# Inject CSS to set background image
+import base64
+def set_background(image_file):
+    with open(image_file, "rb") as file:
+        encoded_string = base64.b64encode(file.read()).decode()
+
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url("data:image/png;base64,{encoded_string}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+# Apply Background (Make sure the image file exists)
+set_background("9.jpg")  # Change the filename if needed
+
+# Your normal Streamlit app
+#st.title("Aditya Finance : Credit Risk Modelling")
+st.markdown("<h1 style='color: black;'>Parabellum Finance : Credit Risk Modelling</h1>", unsafe_allow_html=True)
 
 row1 = st.columns(3)
 row2 = st.columns(3)
 row3 = st.columns(3)
 row4 = st.columns(3)
+
+#font colour
+st.markdown(
+    """
+    <style>
+    
+    /* Apply black color to all text labels (Age, Income, etc.) */
+    label, .stSelectbox label, .stNumberInput label {
+        color: black !important;
+        font-weight: bold !important;
+        font-size: 18px !important; /* Bigger text for labels */
+    }
+
+    /* Apply only to the number inputs and text inputs */
+    .stNumberInput input, .stTextInput input {
+        font-family: 'Arial', sans-serif !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 # Assign inputs to the first row with default values
 with row1[0]:
